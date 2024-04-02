@@ -1,0 +1,11 @@
+02:20:30.302 [main] INFO  org.example.Main - Se creó la ventana
+02:33:36.746 [main] INFO  org.example.Main - Se creó la ventana
+02:33:48.349 [AWT-EventQueue-0] INFO  org.example.Procesador - Se crearon las listas
+02:33:48.350 [AWT-EventQueue-0] INFO  org.example.Procesador - Se asignaron todas las palabras del archivo
+02:33:48.351 [AWT-EventQueue-0] INFO  org.example.Procesador - Se cerro el reader
+02:33:48.372 [AWT-EventQueue-0] INFO  org.example.Procesador - Se escribieron todas las palabras del archivo
+02:34:29.487 [AWT-EventQueue-0] INFO  org.example.Ventana - Se reordenó la lista A
+02:34:29.488 [AWT-EventQueue-0] INFO  org.example.Ventana - Se reordenó la lista E
+02:34:29.490 [AWT-EventQueue-0] INFO  org.example.Ventana - Se reordenó la lista I
+02:34:29.493 [AWT-EventQueue-0] INFO  org.example.Ventana - Se reordenó la lista O
+02:34:29.494 [AWT-EventQueue-0] INFO  org.example.Ventana - Se reordenó la lista U
