@@ -3,7 +3,7 @@
     "mainTitle" : "CHRISTIAN TERRAZAS - DESARROLLO DE SOFTWARE",
     "sections": ["ACERCA DE MI", "LENGUAJES Y TECNOLOGIAS","MIS PROYECTOS", "CERTIFICACIONES", "CONTACTO"],
     "abtMe": "¡Hola!, soy un estudiante de Ingenieria de Sistemas de 6to semestre en la universidad NUR en Santa Cruz, Bolivia. Actualmente estoy enfocado en aprender y mejorar en el campo de Desarrollo Web Full Stack. Tengo experiencia desarrollando aplicaciones web fullstack de muestra que funcionan con bases de datos PostgreSQL. Se me da bien aprender nuevas tecnologias, la comunicacion con los clientes y el trabajo en equipo.",
-    "tecnologies": ["Javascript/NodeJs", "Express", "HTML/CSS", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
+    "tecnologies": ["ReactJs", "Javascript/NodeJs", "Express", "HTML/CSS", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
     "tecnologiesText": "Lenguajes de programacion y tecnologias en los que tengo experiencia.",
     "projectsTitle": "MIS PROYECTOS",
     "projects": [
@@ -13,14 +13,12 @@
 
     "certificates": [
         {"title": "Analista programador (Universidad NUR)", "link":"https://github.com/Christianterrazasl/Portafolio/blob/main/img/certificadoNurAnalistaProgramador.jpg"},
+        {"title": "Desarrollo front end con React", "link": "https://coursera.org/share/4e136f50e66d6e1daf3f01dfedb58874"},
         {"title": "Intrduccion a la Ciberseguridad", "link": "https://coursera.org/share/023f4b4ced8dead234efe3a2f8f651f4"}, 
         {"title": "Introduccion a la Ingenieria de Software", "link": "https://coursera.org/share/f6d7f808bcd0448b5b714db96ab3a227"},
         {"title": "Programacion con Javascript", "link": "https://coursera.org/share/3fdd980145ce54de0f34c1dab3e5768e"},
         {"title": "Introduccion a html, css y javascript", "link":"https://coursera.org/share/eca47f22f7b2a0dc39fd6be8b40da4e7"},
         {"title": "Git y github", "link": "https://coursera.org/share/14d03726550f89e694abd1f8403ef4cc"}
-        
-        
-    
     ],
     "certificatesTitle": "CERTIFICACIONES",
     "contactTitle":"CONTACTO"

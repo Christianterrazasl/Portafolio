@@ -3,7 +3,7 @@
     "mainTitle" : "CHRISTIAN TERRAZAS - SOFTWARE DEVELOPER",
     "sections": ["ABOUT ME", "SKILLS AND TECHNOLOGIES","MY PROJECTS", "CERTIFICATIONS", "CONTACT ME"],
     "abtMe": "Hi!, I’m a Software Engineering student at NUR University in Santa Cruz, Bolivia. I’m currently focused on learning and building Full Stack Web Development projects. I have experience developing test fullStack web apps. I excel at acquiring new skills, learning modern technologies, and comunicating with clients.",
-    "tecnologies": ["Javascript/NodeJs", "Express", "HTML/CSS", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
+    "tecnologies": ["ReactJs", "Javascript/NodeJs", "Express", "HTML/CSS", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
     "tecnologiesText": "Programming languages and technologies that I have experience working with.",
     "projectsTitle": "MY PROJECTS",
     "projects": [
@@ -23,6 +23,7 @@
     "certificatesTitle": "CERTIFICATIONS",
     "certificates": [
         {"title": "Programming analist (NUR University certificate)", "link":"https://github.com/Christianterrazasl/Portafolio/blob/main/img/certificadoNurAnalistaProgramador.jpg"},
+        {"title": "React front-end development", "link": "https://coursera.org/share/4e136f50e66d6e1daf3f01dfedb58874"},
         {"title": "Introduction to CyberSecurity", "link": "https://coursera.org/share/023f4b4ced8dead234efe3a2f8f651f4"}, 
         {"title": "Introduction to Software Engineering", "link": "https://coursera.org/share/f6d7f808bcd0448b5b714db96ab3a227"},
         {"title": "Javascript programming essentials", "link": "https://coursera.org/share/3fdd980145ce54de0f34c1dab3e5768e"},
