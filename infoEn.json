@@ -3,21 +3,25 @@
     "mainTitle" : "CHRISTIAN TERRAZAS - SOFTWARE DEVELOPER",
     "sections": ["ABOUT ME", "SKILLS AND TECHNOLOGIES","MY PROJECTS", "CERTIFICATIONS", "CONTACT ME"],
     "abtMe": "Hi!, I’m a Software Engineering student at NUR University in Santa Cruz, Bolivia. I’m currently focused on learning and building Full Stack Web Development projects. I have experience developing test fullStack web apps. I excel at acquiring new skills, learning modern technologies, and comunicating with clients.",
-    "tecnologies": ["ReactJs", "Javascript/NodeJs", "Express", "HTML/CSS", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
+    "tecnologies": ["ReactJs", "Javascript/NodeJs", "Express","EJS","Bootstrap", "Sequelize", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
     "tecnologiesText": "Programming languages and technologies that I have experience working with.",
     "projectsTitle": "MY PROJECTS",
     "projects": [
         {
-        "title": "Titan Ironworks E-commerce", 
-        "descr": "A Full Stack Website for a fictional e-commerce brand named Titan Ironworks. The front end was built using pure HTML, CSS, and JavaScript, while the back end runs on Node.js and Express. The application uses a PostgreSQL database to process and store data. Link:",
-        "link": "https://github.com/Christianterrazasl/TiendaWeb"
+        "title": "Burger Week Page", 
+        "descr": "This assignment project for university was to create a page for a local event called Burger Week. The project uses Bootstrap for styling, EJS for server side rendering and Sequelize for the db operations. The code is available at the link below: ",
+        "link": "https://github.com/Christianterrazasl/burgerWeekPage"
         },
         {
         "title": "Web Portfolio",
         "descr": "This dynamic web portfolio updates its content based on the user’s selected language using JavaScript. A simple yet useful little project. Link:", 
         "link": "https://github.com/Christianterrazasl/Portafolio"
         },
-        {"title": "React e-commerce front-end", "descr": "E-commerce front-end page, made while learning react, using useContext hook to manage a shopping cart feature.", "link": "https://github.com/Christianterrazasl/reactStoreFrontend"}
+        {
+            "title": "Boltech academic management system (In progress)",
+            "descr": "Assignment group project for university, a fullstack academic management system for a fictitious university. The project is still in progress and is being developed using the PERN stack. The code is available at the link below:", 
+            "link": "https://github.com/Christianterrazasl/boltech"
+        }
     
     ],
     "certificatesTitle": "CERTIFICATIONS",

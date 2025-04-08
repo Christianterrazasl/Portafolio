@@ -3,13 +3,25 @@
     "mainTitle" : "CHRISTIAN TERRAZAS - DESARROLLO DE SOFTWARE",
     "sections": ["ACERCA DE MI", "LENGUAJES Y TECNOLOGIAS","MIS PROYECTOS", "CERTIFICACIONES", "CONTACTO"],
     "abtMe": "¡Hola!, soy un estudiante de Ingenieria de Sistemas de 6to semestre en la universidad NUR en Santa Cruz, Bolivia. Actualmente estoy enfocado en aprender y mejorar en el campo de Desarrollo Web Full Stack. Tengo experiencia desarrollando aplicaciones web fullstack de muestra que funcionan con bases de datos PostgreSQL. Se me da bien aprender nuevas tecnologias, la comunicacion con los clientes y el trabajo en equipo.",
-    "tecnologies": ["ReactJs", "Javascript/NodeJs", "Express", "HTML/CSS", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
+    "tecnologies": ["ReactJs", "Javascript/NodeJs", "EJS","Express", "Bootstrap","Sequelize", "PostgreSQL", "MySQL","Git/Github", "VirtualBox", "Java"],
     "tecnologiesText": "Lenguajes de programacion y tecnologias en los que tengo experiencia.",
     "projectsTitle": "MIS PROYECTOS",
     "projects": [
-        {"title": "Titan Ironworks E-commerce", "descr": "Sitio web de una empresa ficticia que vende equipamiento de gimnasio, cuenta con el frontend hecho con html y css puro, ademas del backend hecho con node y express, se conecta con una base de datos PostgreSQL y usa el patron de diseno repository. El proyecto aun no esta terminado. El codigo esta en el link abajo: ", "link": "https://github.com/Christianterrazasl/TiendaWeb"}, 
-        {"title": "Portafolio Web", "descr": "Es el proyecto que estas viendo ahora mismo, cambia de idioma a eleccion del usuario y recuerda el idioma seleccionado la proxima que entres. Solo frontend con html, css y javascript usando localstorage. El link al codigo esta abajo: ", "link": "https://github.com/Christianterrazasl/Portafolio"},
-        {"title": "React e-commerce front-end", "descr": "Proyecto para aprender a usar react desarrollando el front-end de una tienda virtual, manejando el carrito de compra con useContext.", "link": "https://github.com/Christianterrazasl/reactStoreFrontend"}],
+        {
+        "title": "Burger Week Page", 
+        "descr": "Sitio web como proyecto para la universidad de la burger week, un evento local, desarrollado con bootstrap, ejs para el renderizado en el servidor, y Sequelize para el manejo de la base de datos.", 
+        "link": "https://github.com/Christianterrazasl/burgerWeekPage"
+        }, 
+        {
+        "title": "Portafolio Web", 
+        "descr": "Es el proyecto que estas viendo ahora mismo, cambia de idioma a eleccion del usuario y recuerda el idioma seleccionado la proxima que entres. Solo frontend con html, css y javascript usando localstorage. El link al codigo esta abajo: ", 
+        "link": "https://github.com/Christianterrazasl/Portafolio"
+        },
+        {
+        "title": "Boltech sistema de gestion academica (En progreso)", 
+        "descr": "Proyecto grupal de la universidad, un sistema de gestion academica para una universidad ficticia. El proyecto esta en progreso y se esta desarrollando con el stack PERN. El link al codigo esta abajo: ", 
+        "link": "https://github.com/Christianterrazasl/reactStoreFrontend"
+        }],
 
     "certificates": [
         {"title": "Analista programador (Universidad NUR)", "link":"https://github.com/Christianterrazasl/Portafolio/blob/main/img/certificadoNurAnalistaProgramador.jpg"},
