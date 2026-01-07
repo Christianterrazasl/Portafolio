@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme{
+    --color-accent: #125FD2;
+
+    /* Backgrounds */
+  --color-bg-white: #F2F2F2;
+  --color-bg-white-acc: #FAFAFA;
+
+  --color-bg-black-soft: #1F1F1F;
+  --color-bg-black: #0D0D0D;
+
+  /* Text */
+  --color-text-black-soft: #4D4D4D;
+  --color-text-black: #0D0D0D;
+
+  --color-text-white-soft: #B2B2B2;
+  --color-text-white: #F2F2F2;
+
+}
+
+h2{
+    font-size: 40px;
+    font-weight: 200;
+    letter-spacing: 0.04em;
+}
+
+h3{
+    font-size: 36px;
+    font-weight: 200;
+    letter-spacing: 0.04em;
+}
+
+body{
+    font-family: 'Inter','Courier New', Courier, monospace;
+}
