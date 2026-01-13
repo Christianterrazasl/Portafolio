@@ -1,10 +1,11 @@
-import ExperienceCard from "./ExperienceCard";
+import ExperienceCard from "./cards/ExperienceCard";
 import GradientWrapper from "./GradientWrapper";
-import SkillCard from "./SkillCard";
-import { useState } from "react";
+import SkillCard from "./cards/SkillCard";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import NavBarItem from "./NavBarItem";
 import { ReactLenis, useLenis } from "lenis/react";
+import Scene from "./Scene";
 
 function App() {
   const lenis = useLenis();
@@ -15,6 +16,21 @@ function App() {
     });
   };
 
+  const [counter, setCounter] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((prev) => {
+        if (prev >= 10) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <ReactLenis root>
       <div>
@@ -22,73 +38,88 @@ function App() {
           id="abtme"
           className="h-screen w-full bg-bg-white flex flex-col relative"
         >
-          <div className="flex items-center mx-auto pt-[56px] justify-center gap-[90px]">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ ease: "linear" }}
+            viewport={{ once: true }}
+            className="flex items-center mx-auto pt-[56px] justify-center gap-[90px]"
+          >
             <NavBarItem title="About me" link="#abtme" />
             <NavBarItem title="Experience" link="#experience" />
             <NavBarItem title="Skills" link="#skills" />
             <NavBarItem title="Contact me" link="#contact" />
-          </div>
-          <div className="flex-1 flex flex-col justify-center gap-0 px-[146px]">
-            <div>
-              <div className="flex items-center gap-3 mb-2 ml-2">
-                <svg
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.66667 8.49999L14.3192 15.034L14.322 15.0364C15.2828 15.741 15.7634 16.0935 16.2899 16.2296C16.7552 16.35 17.2444 16.35 17.7097 16.2296C18.2366 16.0933 18.7187 15.7398 19.6812 15.034C19.6812 15.034 25.2309 10.7751 28.3333 8.49999M4.25 22.3836V11.6169C4.25 10.0301 4.25 9.23612 4.55881 8.63004C4.83046 8.09691 5.26359 7.66378 5.79671 7.39214C6.4028 7.08333 7.19679 7.08333 8.78361 7.08333H25.2169C26.8038 7.08333 27.5961 7.08333 28.2021 7.39214C28.7353 7.66378 29.1698 8.09691 29.4415 8.63004C29.75 9.23553 29.75 10.0286 29.75 11.6123V22.3884C29.75 23.9721 29.75 24.764 29.4415 25.3695C29.1698 25.9026 28.7353 26.3365 28.2021 26.6082C27.5967 26.9167 26.8048 26.9167 25.221 26.9167H8.77896C7.19524 26.9167 6.4022 26.9167 5.79671 26.6082C5.26359 26.3365 4.83046 25.9026 4.55881 25.3695C4.25 24.7634 4.25 23.9704 4.25 22.3836Z"
-                    stroke="#0D0D0D"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <svg
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M17 2.83333C15.1396 2.83333 13.2974 3.19976 11.5786 3.9117C9.85987 4.62364 8.29815 5.66715 6.98265 6.98265C4.32588 9.63941 2.83333 13.2428 2.83333 17C2.83333 23.2617 6.89916 28.5742 12.5233 30.4583C13.2317 30.5717 13.4583 30.1325 13.4583 29.75C13.4583 29.4242 13.4583 28.5317 13.4583 27.3558C9.53416 28.2058 8.69833 25.4575 8.69833 25.4575C8.04666 23.8142 7.12583 23.375 7.12583 23.375C5.83666 22.4967 7.225 22.525 7.225 22.525C8.64166 22.6242 9.3925 23.9842 9.3925 23.9842C10.625 26.1375 12.7075 25.5 13.515 25.16C13.6425 24.2392 14.0108 23.6158 14.4075 23.2617C11.2625 22.9075 7.96166 21.6892 7.96166 16.2917C7.96166 14.7192 8.5 13.4583 9.42083 12.4525C9.27916 12.0983 8.78333 10.625 9.5625 8.7125C9.5625 8.7125 10.7525 8.33 13.4583 10.1575C14.5775 9.84583 15.7958 9.69 17 9.69C18.2042 9.69 19.4225 9.84583 20.5417 10.1575C23.2475 8.33 24.4375 8.7125 24.4375 8.7125C25.2167 10.625 24.7208 12.0983 24.5792 12.4525C25.5 13.4583 26.0383 14.7192 26.0383 16.2917C26.0383 21.7033 22.7233 22.8933 19.5642 23.2475C20.0742 23.6867 20.5417 24.5508 20.5417 25.8683C20.5417 27.7667 20.5417 29.2967 20.5417 29.75C20.5417 30.1325 20.7683 30.5858 21.4908 30.4583C27.115 28.56 31.1667 23.2617 31.1667 17C31.1667 15.1396 30.8002 13.2974 30.0883 11.5786C29.3763 9.85987 28.3328 8.29815 27.0173 6.98265C25.7018 5.66715 24.1401 4.62364 22.4213 3.9117C20.7026 3.19976 18.8604 2.83333 17 2.83333Z"
-                    fill="#0D0D0D"
-                  />
-                </svg>
-              </div>
-              <p className="italic text-text-black-soft text-[32px] ml-2 mb-3">
-                Hi, I’m Christian, a
-              </p>
-              <h1
-                className="text-[64px] leading-[1] tracking-[0.04em]"
-                style={{ fontWeight: 100 }}
+          </motion.div>
+          <div className="flex-1 flex items-center">
+            <div className="flex flex-col justify-center gap-0 pl-[146px]">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ ease: "easeInOut", duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="mb-[48px]"
               >
-                Full-stack Developer & <br /> Product Designer
-              </h1>
+                <p className="italic text-text-black-soft text-[32px] ml-2 mb-3 leading-none">
+                  Hi, I’m Christian, a
+                </p>
+                <h1
+                  className="text-[64px] leading-[1] tracking-[0.04em]"
+                  style={{ fontWeight: 200 }}
+                >
+                  Full-stack Developer & <br /> Product Designer
+                </h1>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ ease: "easeInOut", duration: 0.5, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="w-full"
+              >
+                <p className="text-text-black-soft max-w-[450px] text-[20px] mb-[48px]">
+                  {" "}
+                  My goal is to create complete, scalable web applications that
+                  combine clean design, intuitive user experiences, and solid
+                  backend integrations. <br />
+                  <br />I focus on building products from concept to deployment,
+                  turning ideas into functional, real-world solutions.
+                </p>
+                <div className="flex items-center text-[20px] gap-4">
+                  <button
+                    className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white hover:bg-[#1053B7]"
+                    onClick={() => handleScrollTo("#contact")}
+                  >
+                    Contact me!
+                  </button>
+                  <button
+                    className="bg-[rgba(0,0,0,0.2)] hover:bg-[rgba(0,0,0,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-black"
+                    onClick={() => handleScrollTo("#experience")}
+                  >
+                    See my projects
+                  </button>
+                </div>
+              </motion.div>
             </div>
-            <div className="w-full flex flex-col items-end pr-[10vw]">
-              <p className="text-text-black-soft max-w-[450px] text-[20px]">
-                {" "}
-                My goal is to create complete, scalable web applications that
-                combine clean design, intuitive user experiences, and solid
-                backend integrations. <br />
-                <br />I focus on building products from concept to deployment,
-                turning ideas into functional, real-world solutions.
-              </p>
+            <div className="flex-1 h-full flex justify-center items-center">
+              <div className="w-[500px] h-[500px]" id="canvas-container">
+                <Scene />
+              </div>
             </div>
           </div>
-          <div className="pb-6">
-            <div className="flex items-start justify-center w-full gap-[68px] pb-10">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeInOut", duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="pb-6"
+          >
+            <div className="flex items-start justify-center w-full gap-[68px] pb-4">
               <div className="flex flex-col items-center text-center gap-5">
                 <p className="text-[64px] text-accent tracking-[0.08em] leading-[0.9]">
-                  10+
+                  {counter}+
                 </p>
-                <p className="text-[20px] font-light w-[180px]">
-                  Successfully Developed Web Applications
-                </p>
+                <p className="text-[20px] font-light w-[180px]">Releases</p>
               </div>
               <div className="flex flex-col items-center gap-5">
                 <svg
@@ -112,19 +143,26 @@ function App() {
                   </defs>
                 </svg>
                 <p className="text-[20px] font-light w-[180px] text-center">
-                  Actively Maintained & Continuously Improved Projects
+                  Mantained Apps
                 </p>
               </div>
             </div>
-            <svg
+            <motion.svg
+              whileInView={{ scale: 1.3 }}
+              initial={{ scale: 1 }}
+              transition={{
+                duration: 0.42,
+                repeat: Infinity,
+                ease: "easeInOut",
+                repeatType: "reverse",
+              }}
               width="25"
               height="29"
               viewBox="0 0 25 29"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="mx-auto cursor-pointer"
-              onClick={()=>handleScrollTo("#experience")}
-
+              onClick={() => handleScrollTo("#experience")}
             >
               <path
                 d="M19.7917 16.3366C19.7905 16.6536 19.682 16.9574 19.4896 17.1824L14.7083 22.7287C14.1224 23.4075 13.3281 23.7888 12.5 23.7888C11.6719 23.7888 10.8776 23.4075 10.2917 22.7287L5.51043 17.1824C5.31642 16.956 5.20752 16.6498 5.20752 16.3305C5.20752 16.0113 5.31642 15.7051 5.51043 15.4787C5.60727 15.3654 5.72248 15.2755 5.84941 15.2142C5.97635 15.1528 6.1125 15.1213 6.25001 15.1213C6.38753 15.1213 6.52368 15.1528 6.65061 15.2142C6.77755 15.2755 6.89276 15.3654 6.9896 15.4787L11.7604 21.0249C11.8573 21.1382 11.9725 21.2281 12.0994 21.2894C12.2264 21.3508 12.3625 21.3823 12.5 21.3823C12.6375 21.3823 12.7737 21.3508 12.9006 21.2894C13.0276 21.2281 13.1428 21.1382 13.2396 21.0249L18.0104 15.4787C18.1073 15.3654 18.2225 15.2755 18.3494 15.2142C18.4764 15.1528 18.6125 15.1213 18.75 15.1213C18.8875 15.1213 19.0237 15.1528 19.1506 15.2142C19.2776 15.2755 19.3928 15.3654 19.4896 15.4787C19.5861 15.5916 19.6625 15.7255 19.7144 15.8727C19.7662 16.0199 19.7925 16.1776 19.7917 16.3366Z"
@@ -134,8 +172,8 @@ function App() {
                 d="M19.7917 7.87848C19.7905 8.19548 19.682 8.49925 19.4896 8.72431L13.2396 15.9743C13.1428 16.0876 13.0276 16.1775 12.9006 16.2388C12.7737 16.3001 12.6375 16.3317 12.5 16.3317C12.3625 16.3317 12.2264 16.3001 12.0994 16.2388C11.9725 16.1775 11.8573 16.0876 11.7604 15.9743L5.51043 8.72432C5.31642 8.49792 5.20752 8.19167 5.20752 7.87244C5.20752 7.55322 5.31642 7.24696 5.51043 7.02057C5.60727 6.90731 5.72248 6.81742 5.84941 6.75608C5.97635 6.69473 6.1125 6.66315 6.25001 6.66315C6.38753 6.66315 6.52368 6.69473 6.65061 6.75608C6.77755 6.81742 6.89276 6.90731 6.9896 7.02057L12.5 13.4126L18.0104 7.02057C18.1073 6.90731 18.2225 6.81742 18.3494 6.75608C18.4764 6.69473 18.6125 6.66315 18.75 6.66315C18.8875 6.66315 19.0237 6.69473 19.1506 6.75608C19.2776 6.81742 19.3928 6.90731 19.4896 7.02057C19.5861 7.13347 19.6625 7.26738 19.7144 7.4146C19.7662 7.56182 19.7925 7.71946 19.7917 7.87848Z"
                 fill="#374957"
               />
-            </svg>
-          </div>
+            </motion.svg>
+          </motion.div>
         </div>
         <div
           id="experience"
@@ -172,6 +210,7 @@ function App() {
 
           <div className="flex items-stretch w-full gap-[56px] mb-[48px]">
             <SkillCard
+              left={true}
               title={"Frontend"}
               skills={[
                 "Next.js 16 & React",
@@ -185,6 +224,7 @@ function App() {
               className="flex-shrink-0 flex-4"
             />
             <SkillCard
+              left={false}
               title={"Backend"}
               skills={["Node.js & Express.js", "Supabase", "REST APIs"]}
               className="flex-shrink-0 flex-3"
@@ -192,6 +232,7 @@ function App() {
           </div>
           <div className="flex items-stretch w-full gap-[56px]">
             <SkillCard
+              left={true}
               title={"Data & Systems"}
               skills={[
                 "PostgreSQL",
@@ -203,6 +244,7 @@ function App() {
             />
 
             <SkillCard
+              left={false}
               title={"Other Professional Skills"}
               skills={[
                 "Clean Code Principles",
@@ -243,22 +285,27 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="flex items-center justify-end gap-3">
-            <svg
-              width="34"
-              height="34"
-              viewBox="0 0 34 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.66667 8.50016L14.3192 15.0342L14.322 15.0366C15.2828 15.7411 15.7634 16.0936 16.2899 16.2298C16.7552 16.3502 17.2444 16.3502 17.7097 16.2298C18.2366 16.0935 18.7187 15.74 19.6812 15.0342C19.6812 15.0342 25.2309 10.7752 28.3333 8.50016M4.25 22.3838V11.6171C4.25 10.0303 4.25 9.23629 4.55881 8.63021C4.83046 8.09708 5.26359 7.66395 5.79671 7.39231C6.4028 7.0835 7.19679 7.0835 8.78361 7.0835H25.2169C26.8038 7.0835 27.5961 7.0835 28.2021 7.39231C28.7353 7.66395 29.1698 8.09708 29.4415 8.63021C29.75 9.2357 29.75 10.0287 29.75 11.6125V22.3886C29.75 23.9723 29.75 24.7642 29.4415 25.3697C29.1698 25.9028 28.7353 26.3367 28.2021 26.6083C27.5967 26.9168 26.8048 26.9168 25.221 26.9168H8.77896C7.19524 26.9168 6.4022 26.9168 5.79671 26.6083C5.26359 26.3367 4.83046 25.9028 4.55881 25.3697C4.25 24.7636 4.25 23.9706 4.25 22.3838Z"
-                stroke="#F2F2F2"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="flex flex-col items-end  gap-3 text-text-white text-[20px]">
+            <div className="flex items-center gap-3">
+              <p>christianterrazas47@gmail.com</p>
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.66667 8.50016L14.3192 15.0342L14.322 15.0366C15.2828 15.7411 15.7634 16.0936 16.2899 16.2298C16.7552 16.3502 17.2444 16.3502 17.7097 16.2298C18.2366 16.0935 18.7187 15.74 19.6812 15.0342C19.6812 15.0342 25.2309 10.7752 28.3333 8.50016M4.25 22.3838V11.6171C4.25 10.0303 4.25 9.23629 4.55881 8.63021C4.83046 8.09708 5.26359 7.66395 5.79671 7.39231C6.4028 7.0835 7.19679 7.0835 8.78361 7.0835H25.2169C26.8038 7.0835 27.5961 7.0835 28.2021 7.39231C28.7353 7.66395 29.1698 8.09708 29.4415 8.63021C29.75 9.2357 29.75 10.0287 29.75 11.6125V22.3886C29.75 23.9723 29.75 24.7642 29.4415 25.3697C29.1698 25.9028 28.7353 26.3367 28.2021 26.6083C27.5967 26.9168 26.8048 26.9168 25.221 26.9168H8.77896C7.19524 26.9168 6.4022 26.9168 5.79671 26.6083C5.26359 26.3367 4.83046 25.9028 4.55881 25.3697C4.25 24.7636 4.25 23.9706 4.25 22.3838Z"
+                  stroke="#F2F2F2"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <a href="https://github.com/christianterrazasl" className="flex items-center gap-3">
+              <p>github.com/christianterrazasl</p>
             <svg
               width="34"
               height="34"
@@ -271,6 +318,7 @@ function App() {
                 fill="#F2F2F2"
               />
             </svg>
+            </a>
           </div>
         </div>
       </div>
