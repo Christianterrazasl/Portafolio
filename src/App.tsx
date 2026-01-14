@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import NavBarItem from "./NavBarItem";
 import { ReactLenis, useLenis } from "lenis/react";
 import Scene from "./Scene";
+import Separator from "./Separator";
 
 function App() {
   const lenis = useLenis();
@@ -31,12 +32,17 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const [emailSubmit, setEmailSubmit] = useState(false);
+  const handleEmailSubmit = () => {
+    setEmailSubmit(true);
+  };
+
   return (
     <ReactLenis root>
       <div>
         <div
           id="abtme"
-          className="h-screen w-full bg-bg-white flex flex-col relative"
+          className="h-screen w-full bg-bg-black flex flex-col relative"
         >
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -59,11 +65,11 @@ function App() {
                 viewport={{ once: true }}
                 className="mb-[48px]"
               >
-                <p className="italic text-text-black-soft text-[32px] ml-2 mb-3 leading-none">
+                <p className="italic text-text-white-soft text-[32px] ml-2 mb-3 leading-none">
                   Hi, I’m Christian, a
                 </p>
                 <h1
-                  className="text-[64px] leading-[1] tracking-[0.04em]"
+                  className="text-[64px] leading-[1] tracking-[0.04em] text-text-white"
                   style={{ fontWeight: 200 }}
                 >
                   Full-stack Developer & <br /> Product Designer
@@ -76,7 +82,7 @@ function App() {
                 viewport={{ once: true }}
                 className="w-full"
               >
-                <p className="text-text-black-soft max-w-[450px] text-[20px] mb-[48px]">
+                <p className="text-text-white-soft max-w-[450px] text-[20px] mb-[48px]">
                   {" "}
                   My goal is to create complete, scalable web applications that
                   combine clean design, intuitive user experiences, and solid
@@ -92,7 +98,7 @@ function App() {
                     Contact me!
                   </button>
                   <button
-                    className="bg-[rgba(0,0,0,0.2)] hover:bg-[rgba(0,0,0,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-black"
+                    className="bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-white"
                     onClick={() => handleScrollTo("#experience")}
                   >
                     See my projects
@@ -114,7 +120,7 @@ function App() {
             viewport={{ once: true }}
             className="pb-6"
           >
-            <div className="flex items-start justify-center w-full gap-[68px] pb-4">
+            <div className="flex items-start justify-center w-full gap-[68px] pb-4 text-text-white">
               <div className="flex flex-col items-center text-center gap-5">
                 <p className="text-[64px] text-accent tracking-[0.08em] leading-[0.9]">
                   {counter}+
@@ -166,15 +172,16 @@ function App() {
             >
               <path
                 d="M19.7917 16.3366C19.7905 16.6536 19.682 16.9574 19.4896 17.1824L14.7083 22.7287C14.1224 23.4075 13.3281 23.7888 12.5 23.7888C11.6719 23.7888 10.8776 23.4075 10.2917 22.7287L5.51043 17.1824C5.31642 16.956 5.20752 16.6498 5.20752 16.3305C5.20752 16.0113 5.31642 15.7051 5.51043 15.4787C5.60727 15.3654 5.72248 15.2755 5.84941 15.2142C5.97635 15.1528 6.1125 15.1213 6.25001 15.1213C6.38753 15.1213 6.52368 15.1528 6.65061 15.2142C6.77755 15.2755 6.89276 15.3654 6.9896 15.4787L11.7604 21.0249C11.8573 21.1382 11.9725 21.2281 12.0994 21.2894C12.2264 21.3508 12.3625 21.3823 12.5 21.3823C12.6375 21.3823 12.7737 21.3508 12.9006 21.2894C13.0276 21.2281 13.1428 21.1382 13.2396 21.0249L18.0104 15.4787C18.1073 15.3654 18.2225 15.2755 18.3494 15.2142C18.4764 15.1528 18.6125 15.1213 18.75 15.1213C18.8875 15.1213 19.0237 15.1528 19.1506 15.2142C19.2776 15.2755 19.3928 15.3654 19.4896 15.4787C19.5861 15.5916 19.6625 15.7255 19.7144 15.8727C19.7662 16.0199 19.7925 16.1776 19.7917 16.3366Z"
-                fill="#374957"
+                fill="white"
               />
               <path
                 d="M19.7917 7.87848C19.7905 8.19548 19.682 8.49925 19.4896 8.72431L13.2396 15.9743C13.1428 16.0876 13.0276 16.1775 12.9006 16.2388C12.7737 16.3001 12.6375 16.3317 12.5 16.3317C12.3625 16.3317 12.2264 16.3001 12.0994 16.2388C11.9725 16.1775 11.8573 16.0876 11.7604 15.9743L5.51043 8.72432C5.31642 8.49792 5.20752 8.19167 5.20752 7.87244C5.20752 7.55322 5.31642 7.24696 5.51043 7.02057C5.60727 6.90731 5.72248 6.81742 5.84941 6.75608C5.97635 6.69473 6.1125 6.66315 6.25001 6.66315C6.38753 6.66315 6.52368 6.69473 6.65061 6.75608C6.77755 6.81742 6.89276 6.90731 6.9896 7.02057L12.5 13.4126L18.0104 7.02057C18.1073 6.90731 18.2225 6.81742 18.3494 6.75608C18.4764 6.69473 18.6125 6.66315 18.75 6.66315C18.8875 6.66315 19.0237 6.69473 19.1506 6.75608C19.2776 6.81742 19.3928 6.90731 19.4896 7.02057C19.5861 7.13347 19.6625 7.26738 19.7144 7.4146C19.7662 7.56182 19.7925 7.71946 19.7917 7.87848Z"
-                fill="#374957"
+                fill="white"
               />
             </motion.svg>
           </motion.div>
         </div>
+        <Separator />
         <div
           id="experience"
           className="bg-bg-black w-full px-[146px] py-[48px]"
@@ -205,8 +212,9 @@ function App() {
             left={false}
           />
         </div>
-        <div id="skills" className="w-full bg-bg-white px-[146px] py-[48px]">
-          <h2 className="mb-[48px]">My skills</h2>
+        <Separator />
+        <div id="skills" className="w-full bg-bg-black px-[146px] py-[48px]">
+          <h2 className="mb-[48px] text-text-white">My skills</h2>
 
           <div className="flex items-stretch w-full gap-[56px] mb-[48px]">
             <SkillCard
@@ -257,6 +265,8 @@ function App() {
             />
           </div>
         </div>
+        <Separator />
+
         <div id="contact" className="bg-bg-black w-full px-[146px] py-[48px]">
           <h4 className="italic text-text-white-soft text-[32px]">
             Let’s connect
@@ -264,27 +274,51 @@ function App() {
           <h2 className="text-text-white mb-[48px] leading-none mb-[60px]">
             Contact me
           </h2>
-          <div className="mx-auto w-[580px] text-text-white-soft text-[20px] mb-[60px]">
-            <h4 className="mb-3 ml-2">Your email</h4>
-            <GradientWrapper color1="#333333" color2="#666666" className="mb-6">
-              <input
-                type="text"
-                className="w-full bg-bg-black-soft rounded-[12px] py-2 px-4 outline-none"
-              />
-            </GradientWrapper>
-            <h4 className="mb-3 ml-2">Your message</h4>
-            <GradientWrapper color1="#333333" color2="#666666" className="mb-6">
-              <textarea
-                className="w-full w-full bg-bg-black-soft rounded-[12px] py-2 px-4 resize-none block outline-none"
-                rows={5}
-              ></textarea>
-            </GradientWrapper>
-            <div className="flex items-center justify-end">
-              <button className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white">
-                Send
-              </button>
+          <form
+            action="https://formsubmit.co/christianterrazas47@gmail.com"
+            method="POST"
+            onSubmit={handleEmailSubmit}
+          >
+            <div className="mx-auto w-[580px] text-text-white-soft text-[20px] mb-[60px]">
+              <h4 className="mb-3 ml-2">Your email</h4>
+              <GradientWrapper
+                color1="#333333"
+                color2="#666666"
+                className="mb-6"
+              >
+                <input
+                  type="email"
+                  className="w-full bg-bg-black-soft rounded-[12px] py-2 px-4 outline-none"
+                  required
+                  placeholder="you@email.com"
+                />
+              </GradientWrapper>
+              <h4 className="mb-3 ml-2">Your message</h4>
+              <GradientWrapper
+                color1="#333333"
+                color2="#666666"
+                className="mb-6"
+              >
+                <textarea
+                  className="w-full w-full bg-bg-black-soft rounded-[12px] py-2 px-4 resize-none block outline-none"
+                  rows={5}
+                  required
+                  placeholder="Hi"
+                ></textarea>
+              </GradientWrapper>
+              <div className="flex items-center justify-end">
+                <button
+                  type="submit"
+                  className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white"
+                  disabled={emailSubmit}
+                  style={{backgroundColor: emailSubmit? "gray" : "#125FD2"}}
+                >
+                  {emailSubmit ? "Email sent" : "Send"}
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
+
           <div className="flex flex-col items-end  gap-3 text-text-white text-[20px]">
             <div className="flex items-center gap-3">
               <p>christianterrazas47@gmail.com</p>
@@ -304,20 +338,23 @@ function App() {
                 />
               </svg>
             </div>
-            <a href="https://github.com/christianterrazasl" className="flex items-center gap-3">
-              <p>github.com/christianterrazasl</p>
-            <svg
-              width="34"
-              height="34"
-              viewBox="0 0 34 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <a
+              href="https://github.com/christianterrazasl"
+              className="flex items-center gap-3"
             >
-              <path
-                d="M17 2.8335C15.1396 2.8335 13.2975 3.19993 11.5787 3.91187C9.85991 4.62381 8.29819 5.66732 6.98269 6.98282C4.32593 9.63958 2.83337 13.2429 2.83337 17.0002C2.83337 23.2618 6.89921 28.5743 12.5234 30.4585C13.2317 30.5718 13.4584 30.1327 13.4584 29.7502C13.4584 29.4243 13.4584 28.5318 13.4584 27.356C9.53421 28.206 8.69837 25.4577 8.69837 25.4577C8.04671 23.8143 7.12587 23.3752 7.12587 23.3752C5.83671 22.4968 7.22504 22.5252 7.22504 22.5252C8.64171 22.6243 9.39254 23.9843 9.39254 23.9843C10.625 26.1377 12.7075 25.5002 13.515 25.1602C13.6425 24.2393 14.0109 23.616 14.4075 23.2618C11.2625 22.9077 7.96171 21.6893 7.96171 16.2918C7.96171 14.7193 8.50004 13.4585 9.42087 12.4527C9.27921 12.0985 8.78337 10.6252 9.56254 8.71266C9.56254 8.71266 10.7525 8.33016 13.4584 10.1577C14.5775 9.846 15.7959 9.69016 17 9.69016C18.2042 9.69016 19.4225 9.846 20.5417 10.1577C23.2475 8.33016 24.4375 8.71266 24.4375 8.71266C25.2167 10.6252 24.7209 12.0985 24.5792 12.4527C25.5 13.4585 26.0384 14.7193 26.0384 16.2918C26.0384 21.7035 22.7234 22.8935 19.5642 23.2477C20.0742 23.6868 20.5417 24.551 20.5417 25.8685C20.5417 27.7668 20.5417 29.2968 20.5417 29.7502C20.5417 30.1327 20.7684 30.586 21.4909 30.4585C27.115 28.5602 31.1667 23.2618 31.1667 17.0002C31.1667 15.1398 30.8003 13.2976 30.0883 11.5788C29.3764 9.86003 28.3329 8.29831 27.0174 6.98282C25.7019 5.66732 24.1402 4.62381 22.4214 3.91187C20.7026 3.19993 18.8604 2.8335 17 2.8335Z"
-                fill="#F2F2F2"
-              />
-            </svg>
+              <p>github.com/christianterrazasl</p>
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 2.8335C15.1396 2.8335 13.2975 3.19993 11.5787 3.91187C9.85991 4.62381 8.29819 5.66732 6.98269 6.98282C4.32593 9.63958 2.83337 13.2429 2.83337 17.0002C2.83337 23.2618 6.89921 28.5743 12.5234 30.4585C13.2317 30.5718 13.4584 30.1327 13.4584 29.7502C13.4584 29.4243 13.4584 28.5318 13.4584 27.356C9.53421 28.206 8.69837 25.4577 8.69837 25.4577C8.04671 23.8143 7.12587 23.3752 7.12587 23.3752C5.83671 22.4968 7.22504 22.5252 7.22504 22.5252C8.64171 22.6243 9.39254 23.9843 9.39254 23.9843C10.625 26.1377 12.7075 25.5002 13.515 25.1602C13.6425 24.2393 14.0109 23.616 14.4075 23.2618C11.2625 22.9077 7.96171 21.6893 7.96171 16.2918C7.96171 14.7193 8.50004 13.4585 9.42087 12.4527C9.27921 12.0985 8.78337 10.6252 9.56254 8.71266C9.56254 8.71266 10.7525 8.33016 13.4584 10.1577C14.5775 9.846 15.7959 9.69016 17 9.69016C18.2042 9.69016 19.4225 9.846 20.5417 10.1577C23.2475 8.33016 24.4375 8.71266 24.4375 8.71266C25.2167 10.6252 24.7209 12.0985 24.5792 12.4527C25.5 13.4585 26.0384 14.7193 26.0384 16.2918C26.0384 21.7035 22.7234 22.8935 19.5642 23.2477C20.0742 23.6868 20.5417 24.551 20.5417 25.8685C20.5417 27.7668 20.5417 29.2968 20.5417 29.7502C20.5417 30.1327 20.7684 30.586 21.4909 30.4585C27.115 28.5602 31.1667 23.2618 31.1667 17.0002C31.1667 15.1398 30.8003 13.2976 30.0883 11.5788C29.3764 9.86003 28.3329 8.29831 27.0174 6.98282C25.7019 5.66732 24.1402 4.62381 22.4214 3.91187C20.7026 3.19993 18.8604 2.8335 17 2.8335Z"
+                  fill="#F2F2F2"
+                />
+              </svg>
             </a>
           </div>
         </div>

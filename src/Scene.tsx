@@ -2,9 +2,7 @@ import { Suspense, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, Canvas } from "@react-three/fiber";
 
-type Props = {};
-
-const Scene = (props: Props) => {
+const Scene = () => {
   return (
     <Canvas
     shadows

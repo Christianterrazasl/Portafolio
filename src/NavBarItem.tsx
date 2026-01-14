@@ -25,7 +25,7 @@ const NavBarItem = (props: Props) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => handleScrollTo(props.link)}
     >
-      <p className="text-sm font-bold uppercase tracking-[0.2em] cursor-pointer">
+      <p className="text-sm font-bold uppercase tracking-[0.2em] cursor-pointer text-text-white">
         {props.title}
       </p>
       <motion.div
