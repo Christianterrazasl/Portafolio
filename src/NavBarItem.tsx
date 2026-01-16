@@ -20,12 +20,12 @@ const NavBarItem = (props: Props) => {
 
   return (
     <div
-      className="flex flex-col items-center"
+      className="flex flex-col items-center cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => handleScrollTo(props.link)}
     >
-      <p className="text-sm font-bold uppercase tracking-[0.2em] cursor-pointer text-text-white">
+      <p className="text-sm font-bold uppercase tracking-[0.2em] text-text-white">
         {props.title}
       </p>
       <motion.div

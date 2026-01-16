@@ -33,8 +33,35 @@ function App() {
   }, []);
 
   const [emailSubmit, setEmailSubmit] = useState(false);
-  const handleEmailSubmit = () => {
-    setEmailSubmit(true);
+
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleEmailSubmit = async () => {
+
+    if(loading || emailSubmit) return;
+
+    setLoading(true);
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("message", message);
+
+    const response = await fetch(
+      "https://formsubmit.co/christianterrazas47@gmail.com",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    setLoading(false)
+
+    console.log(response);
+    if (response) {
+      setEmailSubmit(true);
+    }
   };
 
   return (
@@ -136,10 +163,10 @@ function App() {
                   xmlns="http://www.w3.org/2000/svg"
                   className=""
                 >
-                  <g clip-path="url(#clip0_15_13)">
+                  <g clipPath="url(#clip0_15_13)">
                     <path
                       d="M28 0C22.4621 0 17.0486 1.64217 12.444 4.71885C7.83947 7.79553 4.25064 12.1685 2.13139 17.2849C0.012132 22.4012 -0.542361 28.0311 0.538025 33.4625C1.61841 38.894 4.28515 43.8831 8.20102 47.799C12.1169 51.7149 17.106 54.3816 22.5375 55.462C27.969 56.5424 33.5988 55.9879 38.7152 53.8686C43.8315 51.7494 48.2045 48.1605 51.2812 43.556C54.3578 38.9514 56 33.5379 56 28C55.992 20.5764 53.0394 13.4592 47.7901 8.20988C42.5409 2.9606 35.4236 0.00802919 28 0V0ZM48.1763 16.3333H40.6607C38.9783 12.4343 36.763 8.78753 34.0783 5.49733C40.0201 7.11416 45.0854 11.0074 48.1763 16.3333ZM38.5 28C38.4809 30.3757 38.1065 32.7351 37.3894 35H18.6107C17.8935 32.7351 17.5192 30.3757 17.5 28C17.5192 25.6243 17.8935 23.2649 18.6107 21H37.3894C38.1065 23.2649 38.4809 25.6243 38.5 28ZM20.482 39.6667H35.518C33.5376 43.5767 31.0057 47.182 28 50.372C24.9932 47.1829 22.4612 43.5774 20.482 39.6667ZM20.482 16.3333C22.4625 12.4233 24.9943 8.81804 28 5.628C31.0068 8.81714 33.5388 12.4226 35.518 16.3333H20.482ZM21.9333 5.49733C19.2446 8.78683 17.0254 12.4336 15.3393 16.3333H7.82368C10.9173 11.005 15.9872 7.11143 21.9333 5.49733ZM5.74235 21H13.7667C13.1618 23.2847 12.8482 25.6367 12.8333 28C12.8482 30.3633 13.1618 32.7153 13.7667 35H5.74235C4.30814 30.4435 4.30814 25.5565 5.74235 21ZM7.82368 39.6667H15.3393C17.0254 43.5664 19.2446 47.2132 21.9333 50.5027C15.9872 48.8886 10.9173 44.995 7.82368 39.6667ZM34.0783 50.5027C36.763 47.2125 38.9783 43.5657 40.6607 39.6667H48.1763C45.0854 44.9926 40.0201 48.8858 34.0783 50.5027ZM50.2577 35H42.2333C42.8382 32.7153 43.1518 30.3633 43.1667 28C43.1518 25.6367 42.8382 23.2847 42.2333 21H50.253C51.6872 25.5565 51.6872 30.4435 50.253 35H50.2577Z"
-                      fill="#125FD2"
+                      fill="#0F4EAE"
                     />
                   </g>
                   <defs>
@@ -218,6 +245,7 @@ function App() {
 
           <div className="flex items-stretch w-full gap-[56px] mb-[48px]">
             <SkillCard
+              key="frontend"
               left={true}
               title={"Frontend"}
               skills={[
@@ -232,6 +260,7 @@ function App() {
               className="flex-shrink-0 flex-4"
             />
             <SkillCard
+              key="backend"
               left={false}
               title={"Backend"}
               skills={["Node.js & Express.js", "Supabase", "REST APIs"]}
@@ -240,6 +269,7 @@ function App() {
           </div>
           <div className="flex items-stretch w-full gap-[56px]">
             <SkillCard
+              key="data"
               left={true}
               title={"Data & Systems"}
               skills={[
@@ -252,6 +282,7 @@ function App() {
             />
 
             <SkillCard
+              key="other"
               left={false}
               title={"Other Professional Skills"}
               skills={[
@@ -274,11 +305,7 @@ function App() {
           <h2 className="text-text-white mb-[48px] leading-none mb-[60px]">
             Contact me
           </h2>
-          <form
-            action="https://formsubmit.co/christianterrazas47@gmail.com"
-            method="POST"
-            onSubmit={handleEmailSubmit}
-          >
+          <form>
             <div className="mx-auto w-[580px] text-text-white-soft text-[20px] mb-[60px]">
               <h4 className="mb-3 ml-2">Your email</h4>
               <GradientWrapper
@@ -291,6 +318,8 @@ function App() {
                   className="w-full bg-bg-black-soft rounded-[12px] py-2 px-4 outline-none"
                   required
                   placeholder="you@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </GradientWrapper>
               <h4 className="mb-3 ml-2">Your message</h4>
@@ -304,16 +333,48 @@ function App() {
                   rows={5}
                   required
                   placeholder="Hi"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
               </GradientWrapper>
               <div className="flex items-center justify-end">
                 <button
-                  type="submit"
+                  type="button"
                   className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white"
                   disabled={emailSubmit}
-                  style={{backgroundColor: emailSubmit? "gray" : "#125FD2"}}
+                  style={{ backgroundColor: emailSubmit ? "gray" : "#125FD2" }}
+                  onClick={handleEmailSubmit}
                 >
-                  {emailSubmit ? "Email sent" : "Send"}
+                  {loading ? (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={20}
+                      height={20}
+                      className="animate-spin"
+                    >
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <path
+                          d="M20.0001 12C20.0001 13.3811 19.6425 14.7386 18.9623 15.9405C18.282 17.1424 17.3022 18.1477 16.1182 18.8587C14.9341 19.5696 13.5862 19.9619 12.2056 19.9974C10.825 20.0328 9.45873 19.7103 8.23975 19.0612"
+                          stroke="#000000"
+                          strokeWidth="3.55556"
+                          strokeLinecap="round"
+                        ></path>{" "}
+                      </g>
+                    </svg>
+                  ) : emailSubmit ? (
+                    "Email sent"
+                  ) : (
+                    "Send"
+                  )}
                 </button>
               </div>
             </div>
