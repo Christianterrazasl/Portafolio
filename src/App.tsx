@@ -7,6 +7,7 @@ import NavBarItem from "./NavBarItem";
 import { ReactLenis, useLenis } from "lenis/react";
 import Scene from "./Scene";
 import Separator from "./Separator";
+import { experienceData, skillsData, type ExperienceCase } from "./data";
 
 function App() {
   const lenis = useLenis();
@@ -39,8 +40,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const handleEmailSubmit = async () => {
-
-    if(loading || emailSubmit) return;
+    if (loading || emailSubmit) return;
 
     setLoading(true);
 
@@ -56,17 +56,90 @@ function App() {
       }
     );
 
-    setLoading(false)
+    setLoading(false);
 
     console.log(response);
-    if (response) {
+    if (response.ok) {
       setEmailSubmit(true);
     }
   };
 
+  const [experienceCardOpen, setExperienceCardOpen] =
+    useState<ExperienceCase | null>(null);
+
+  useEffect(() => {
+    if (experienceCardOpen) {
+      lenis?.stop();
+      document.body.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      lenis?.start();
+      document.body.style.overflow = "";
+    };
+  }, [experienceCardOpen, lenis]);
+
   return (
     <ReactLenis root>
-      <div>
+      <div className="relative">
+        {experienceCardOpen && (
+          <div
+            className="fixed inset-0 w-full h-screen bg-black/70 z-[100] backdrop-blur-[5px] flex justify-center items-center p-8"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setExperienceCardOpen(null);
+              }
+            }}
+          >
+            <motion.div
+            
+            initial={{opacity:0, y:20}}
+            animate={{opacity:1, y:0}}
+            transition={{duration:0.3}}
+            className="bg-bg-black-soft w-[1200px] max-h-[90vh] overflow-y-auto rounded-[12px] p-8">
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="text-text-white text-[32px]">
+                  {experienceCardOpen.title}
+                </h2>
+                <button
+                  onClick={() => setExperienceCardOpen(null)}
+                  className="text-text-white-soft hover:text-text-white cursor-pointer"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 6L6 18M6 6L18 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <p className="text-[20px] text-text-white-soft font-light mb-8">
+                {experienceCardOpen.description}
+              </p>
+              <p className="text-[20px] text-text-white-soft font-light mb-4">
+                <span className="font-medium">Stack used:</span>{" "}
+                {experienceCardOpen.stack}
+              </p>
+              {experienceCardOpen.link && (
+                <p className="text-[20px] text-text-white-soft font-light mb-4">
+                  <span className="font-medium">Link:</span>{" "}
+                  {experienceCardOpen.link}
+                </p>
+              )}
+            </motion.div>
+          </div>
+        )}
         <div
           id="abtme"
           className="h-screen w-full bg-bg-black flex flex-col relative"
@@ -214,30 +287,12 @@ function App() {
           className="bg-bg-black w-full px-[146px] py-[48px]"
         >
           <h2 className="text-text-white text-end mb-[48px]">My experience</h2>
-          <ExperienceCard
-            title="Gamified Courses Platform"
-            description="A gamified e-learning platform built with Next.js and Supabase. It features user authentication, role-based access, file storage, and a relational database powered by Supabase. Video content is hosted using Mux, with progress tracking to monitor user engagement and course completion. Payments are managed with stripe."
-            link=""
-            note="My Magnum Opus (so far)"
-            stack="Next.js, React, Supabase (Auth, Database, Storage), Mux, Tailwind CSS"
-            left={false}
-          />
-          <ExperienceCard
-            title="International Product Website (Multi-page Frontend)"
-            description="Frontend development for a large-scale international product website, including multiple marketing and product pages. Focused on performance, responsive layouts, accessibility, and reusable components across the entire site."
-            link=""
-            note="Many animations, zero regrets."
-            stack="Next.js, React, Tailwind CSS, Framer Motion, GSAP"
-            left={true}
-          />
-          <ExperienceCard
-            title="Crypto Streaming Platform (MVP)"
-            description="Frontend development for the MVP of a crypto-based live streaming platform, allowing users to purchase cryptocurrency and donate it to streamers. Focused on building core user flows, responsive UI, and a scalable frontend architecture."
-            link=""
-            note="MVP completed — the startup journey ended there."
-            stack="React, Next.js, Tailwind CSS"
-            left={false}
-          />
+          {experienceData.map((exp) => (
+            <ExperienceCard
+              experienceCase={exp}
+              setExperienceCardOpen={() => setExperienceCardOpen(exp)}
+            />
+          ))}
         </div>
         <Separator />
         <div id="skills" className="w-full bg-bg-black px-[146px] py-[48px]">
@@ -245,53 +300,23 @@ function App() {
 
           <div className="flex items-stretch w-full gap-[56px] mb-[48px]">
             <SkillCard
-              key="frontend"
-              left={true}
-              title={"Frontend"}
-              skills={[
-                "Next.js 16 & React",
-                "TypeScript & JavaScript (ES6+)",
-                "Tailwind 4",
-                "HTML5 & CSS3",
-                "Framer Motion & GSAP",
-                "API Integration",
-                "Figma",
-              ]}
+              skillCase={skillsData[0]}
               className="flex-shrink-0 flex-4"
             />
+
             <SkillCard
-              key="backend"
-              left={false}
-              title={"Backend"}
-              skills={["Node.js & Express.js", "Supabase", "REST APIs"]}
+              skillCase={skillsData[1]}
               className="flex-shrink-0 flex-3"
             />
           </div>
           <div className="flex items-stretch w-full gap-[56px]">
             <SkillCard
-              key="data"
-              left={true}
-              title={"Data & Systems"}
-              skills={[
-                "PostgreSQL",
-                "MongoDB",
-                "Pentaho Data Integration (ETL)",
-                "OLAP Cubes",
-              ]}
+              skillCase={skillsData[2]}
               className={"flex-shrink-0 flex-3"}
             />
 
             <SkillCard
-              key="other"
-              left={false}
-              title={"Other Professional Skills"}
-              skills={[
-                "Clean Code Principles",
-                "Performance Optimization",
-                "UI/UX Fundamentals",
-                "Cross-Functional Collaboration (Working with designers and backend engineers)",
-                "Task-Based Development (Jira, Linear)",
-              ]}
+              skillCase={skillsData[3]}
               className={"flex-shrink-0 flex-4"}
             />
           </div>
