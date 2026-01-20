@@ -20,7 +20,7 @@ const SkillCard = ({skillCase, className} : {skillCase: SkillCase, className:str
       <h3 className="mb-6 text-text-white">{skillCase.title}</h3>
       <ul className="text-[20px] font-light text-text-white-soft pl-2 list-disc list-inside space-y-[1em]">
         {skillCase.skills.map((skill) => (
-          <li>{skill}</li>
+          <li key={skill}>{skill}</li>
         ))}
       </ul>
     </motion.div>
