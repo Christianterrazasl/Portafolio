@@ -95,11 +95,11 @@ function App() {
             }}
           >
             <motion.div
-            
-            initial={{opacity:0, y:20}}
-            animate={{opacity:1, y:0}}
-            transition={{duration:0.3}}
-            className="bg-bg-black-soft w-[1200px] max-h-[90vh] overflow-y-auto rounded-[12px] p-8">
+
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-bg-black-soft w-[1200px] max-h-[90vh] overflow-y-auto rounded-[12px] p-8">
               <div className="flex justify-between items-start mb-6">
                 <h2 className="text-text-white text-[32px]">
                   {experienceCardOpen.title}
@@ -127,7 +127,7 @@ function App() {
               <p className="text-[20px] text-text-white-soft font-light mb-8">
                 {experienceCardOpen.description}
               </p>
-              <p className="text-[20px] text-text-white-soft font-light mb-4">
+              <p className="text-[20px] text-text-white-soft font-light mb-8">
                 <span className="font-medium">Stack used:</span>{" "}
                 {experienceCardOpen.stack}
               </p>
@@ -137,6 +137,11 @@ function App() {
                   {experienceCardOpen.link}
                 </p>
               )}
+
+              {experienceCardOpen.images && experienceCardOpen.images.length > 0 && <div className="grid grid-cols-2 gap-4">
+
+                {experienceCardOpen.images.map((expImg) => <div className="rounded-xl overflow-hidden"><img src={expImg} width={500} height={500} className="w-full h-full object-contain" /></div>)}
+              </div>}
             </motion.div>
           </div>
         )}
@@ -286,7 +291,9 @@ function App() {
           id="experience"
           className="bg-bg-black w-full px-[146px] py-[48px]"
         >
-          <h2 className="text-text-white text-end mb-[48px]">My experience</h2>
+          <h2 className="text-text-white text-end mb-4">My experience</h2>
+          <p className="text-text-white-soft text-end mb-[48px] text-[20px]">Images have been modified in order to protect clients privacy.</p>
+
           {experienceData.map((exp) => (
             <ExperienceCard
               experienceCase={exp}

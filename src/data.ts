@@ -4,7 +4,7 @@ export type ExperienceCase = {
   title: string;
   description: string;
   stack: string;
-  link: string | undefined;
+  link: string | undefined | null;
   video: string | undefined | null;
   images: string[] | undefined | null;
 };
@@ -14,35 +14,35 @@ export const experienceData: ExperienceCase[] = [
     title: "Gamified Courses Platform",
     description:
       "A gamified e-learning platform built with Next.js and Supabase. It features user authentication, role-based access, file storage, and a relational database powered by Supabase. Video content is hosted using Mux, with progress tracking to monitor user engagement and course completion. Payments are managed with stripe.",
-    link: "",
+    link: null,
     note: "My Magnum Opus (so far)",
     stack:
       "Next.js, React, Supabase (Auth, Database, Storage), Mux, Tailwind CSS",
     left: false,
     video: null,
-    images: null,
+    images: ["/images/v11.png", "/images/v21.png", "/images/v31.png", "/images/v41.png"],
   },
   {
     title: "International Product Website (Multi-page Frontend)",
     description:
       "Frontend development for a large-scale international product website, including multiple marketing and product pages. Focused on performance, responsive layouts, accessibility, and reusable components across the entire site.",
-    link: "",
+    link: null,
     note: "Many animations, zero regrets.",
     stack: "Next.js, React, Tailwind CSS, Framer Motion, GSAP",
     left: true,
     video: null,
-    images: null,
+    images: ["/images/t11.png", "/images/t21.png", "/images/t31.png"],
   },
   {
     title: "Crypto Streaming Platform (MVP)",
     description:
       "Frontend development for the MVP of a crypto-based live streaming platform, allowing users to purchase cryptocurrency and donate it to streamers. Focused on building core user flows, responsive UI, and a scalable frontend architecture.",
-    link: "",
+    link: null,
     note: "MVP completed — the startup journey ended there.",
     stack: "React, Next.js, Tailwind CSS",
     left: false,
     video: null,
-    images: null,
+    images: ["/images/s1.png", "/images/s2.png", "/images/s3.png"],
   },
 ];
 
@@ -66,6 +66,7 @@ export const skillsData: SkillCase[] = [
       "Framer Motion & GSAP",
       "API Integration",
       "Figma",
+      "Android mobile app development (kotlin)"
     ],
   },
 
