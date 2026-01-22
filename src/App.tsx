@@ -8,6 +8,7 @@ import { ReactLenis, useLenis } from "lenis/react";
 import Scene from "./Scene";
 import Separator from "./Separator";
 import { experienceData, skillsData, type ExperienceCase } from "./data";
+import CardCarouselDots from "./CardCarousel";
 
 function App() {
   const lenis = useLenis();
@@ -84,7 +85,7 @@ function App() {
 
   return (
     <ReactLenis root>
-      <div className="relative">
+      <div className="relative bg-bg-black">
         {experienceCardOpen && (
           <div
             className="fixed inset-0 w-full h-screen bg-black/70 z-[100] backdrop-blur-[5px] flex justify-center items-center p-8"
@@ -101,7 +102,7 @@ function App() {
               transition={{ duration: 0.3 }}
               className="bg-bg-black-soft w-[1200px] max-h-[90vh] overflow-y-auto rounded-[12px] p-8">
               <div className="flex justify-between items-start mb-6">
-                <h2 className="text-text-white text-[32px]">
+                <h2 className="text-text-white text-[32px] md:text-[40px]">
                   {experienceCardOpen.title}
                 </h2>
                 <button
@@ -138,10 +139,18 @@ function App() {
                 </p>
               )}
 
-              {experienceCardOpen.images && experienceCardOpen.images.length > 0 && <div className="grid grid-cols-2 gap-4">
+              <div className="md:block hidden">
+                {experienceCardOpen.images && experienceCardOpen.images.length > 0 && <div className="grid grid-cols-2 gap-4">
 
-                {experienceCardOpen.images.map((expImg) => <div className="rounded-xl overflow-hidden"><img src={expImg} width={500} height={500} className="w-full h-full object-contain" /></div>)}
-              </div>}
+                  {experienceCardOpen.images.map((expImg) => <div className="rounded-xl overflow-hidden"><img src={expImg} width={500} height={500} className="w-full h-full object-contain" /></div>)}
+                </div>}
+              </div>
+              <div className="md:hidden">
+                {experienceCardOpen.images && experienceCardOpen.images.length > 0 && <div className="rounded-xl overflow-hidden"><img src={experienceCardOpen.images[0]} width={500} height={500} className="w-full object-cover" />
+                </div>}
+              </div>
+
+
             </motion.div>
           </div>
         )}
@@ -154,7 +163,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ ease: "linear" }}
             viewport={{ once: true }}
-            className="flex items-center mx-auto pt-[56px] justify-center gap-[90px]"
+            className="hidden md:flex items-center mx-auto pt-[56px] justify-center gap-[90px]"
           >
             <NavBarItem title="About me" link="#abtme" />
             <NavBarItem title="Experience" link="#experience" />
@@ -162,7 +171,7 @@ function App() {
             <NavBarItem title="Contact me" link="#contact" />
           </motion.div>
           <div className="flex-1 flex items-center">
-            <div className="flex flex-col justify-center gap-0 pl-[146px]">
+            <div className="flex flex-col justify-between md:justify-center gap-0 md:pl-[146px] h-full md:h-auto px-[28px] md:px-0 pt-[100px] pb-[40px] md:pt-0 md:pb-0 w-full">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -170,16 +179,36 @@ function App() {
                 viewport={{ once: true }}
                 className="mb-[48px]"
               >
-                <p className="italic text-text-white-soft text-[32px] ml-2 mb-3 leading-none">
+                <p className="italic text-text-white-soft text-[20px] lg:text-[32px] ml-2 mb-3 leading-none">
                   Hi, I’m Christian, a
                 </p>
                 <h1
-                  className="text-[64px] leading-[1] tracking-[0.04em] text-text-white"
+                  className="text-[40px] lg:text-[64px] leading-[1] tracking-[0.04em] text-text-white"
                   style={{ fontWeight: 200 }}
                 >
                   Full-stack Developer & <br /> Product Designer
                 </h1>
               </motion.div>
+              <div className="flex md:hidden justify-center items-center relative">
+
+                <div className="w-[175px] h-[175px] relative">
+                  <motion.div initial={{ rotate: 45 }} style={{ transformOrigin: "100% center" }} animate={{ rotate: 405 }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 w-1/2 h-full bg-accent rounded-l-[150px] z-0" />
+                  <svg width="97" height="97" viewBox="0 0 93 97" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[100px] h-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                    <g clipPath="url(#clip0_81_41)">
+                      <path d="M46.5 48.4997C51.0984 48.4997 55.5936 47.0775 59.417 44.4129C63.2405 41.7482 66.2205 37.9609 67.9802 33.5298C69.7399 29.0987 70.2004 24.2228 69.3033 19.5188C68.4062 14.8148 66.1918 10.4938 62.9402 7.1024C59.6887 3.71097 55.5459 1.40138 51.0359 0.465693C46.5258 -0.469998 41.851 0.0102325 37.6026 1.84566C33.3542 3.68108 29.7231 6.78927 27.1683 10.7772C24.6136 14.765 23.25 19.4535 23.25 24.2497C23.2562 30.6793 25.7077 36.8436 30.0666 41.39C34.4255 45.9364 40.3356 48.4933 46.5 48.4997ZM46.5 8.08307C49.5656 8.08307 52.5624 9.03123 55.1113 10.8076C57.6603 12.5841 59.647 15.1089 60.8201 18.063C61.9933 21.0171 62.3002 24.2677 61.7022 27.4037C61.1041 30.5397 59.6279 33.4203 57.4602 35.6813C55.2924 37.9422 52.5306 39.482 49.5239 40.1058C46.5172 40.7296 43.4007 40.4094 40.5684 39.1858C37.7362 37.9622 35.3154 35.89 33.6122 33.2315C31.9091 30.5729 31 27.4472 31 24.2497C31 19.9621 32.633 15.85 35.5398 12.8182C38.4467 9.78634 42.3891 8.08307 46.5 8.08307Z" fill="#F2F2F2" />
+                      <path d="M46.5 56.5858C37.2537 56.5965 28.3891 60.4323 21.851 67.2516C15.3129 74.0709 11.6353 83.3169 11.625 92.9608C11.625 94.0327 12.0333 95.0608 12.76 95.8187C13.4867 96.5767 14.4723 97.0025 15.5 97.0025C16.5277 97.0025 17.5133 96.5767 18.24 95.8187C18.9667 95.0608 19.375 94.0327 19.375 92.9608C19.375 85.4574 22.2328 78.2613 27.3197 72.9556C32.4067 67.6499 39.306 64.6691 46.5 64.6691C53.694 64.6691 60.5933 67.6499 65.6803 72.9556C70.7672 78.2613 73.625 85.4574 73.625 92.9608C73.625 94.0327 74.0333 95.0608 74.76 95.8187C75.4867 96.5767 76.4723 97.0025 77.5 97.0025C78.5277 97.0025 79.5133 96.5767 80.24 95.8187C80.9667 95.0608 81.375 94.0327 81.375 92.9608C81.3647 83.3169 77.6871 74.0709 71.149 67.2516C64.6109 60.4323 55.7463 56.5965 46.5 56.5858Z" fill="#F2F2F2" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_81_41">
+                        <rect width="93" height="97" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+
+
+
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -187,23 +216,25 @@ function App() {
                 viewport={{ once: true }}
                 className="w-full"
               >
-                <p className="text-text-white-soft max-w-[450px] text-[20px] mb-[48px]">
+                <p className="text-text-white-soft max-w-none md:max-w-[450px] text-[20px] mb-[34px] lg:mb-[1em]">
                   {" "}
                   My goal is to create complete, scalable web applications that
                   combine clean design, intuitive user experiences, and solid
-                  backend integrations. <br />
-                  <br />I focus on building products from concept to deployment,
-                  turning ideas into functional, real-world solutions.
+                  backend integrations.
                 </p>
-                <div className="flex items-center text-[20px] gap-4">
+
+                <p className="text-text-white-soft max-w-[450px] text-[20px] mb-[48px] lg:block hidden">
+                  I focus on building products from concept to deployment,
+                  turning ideas into functional, real-world solutions.</p>
+                <div className="flex items-center text-[20px] gap-4 md:justify-start justify-center">
                   <button
-                    className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white hover:bg-[#1053B7]"
+                    className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white hover:bg-[#1053B7] w-full md:w-auto"
                     onClick={() => handleScrollTo("#contact")}
                   >
                     Contact me!
                   </button>
                   <button
-                    className="bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-white"
+                    className="bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-white w-full md:w-auto"
                     onClick={() => handleScrollTo("#experience")}
                   >
                     See my projects
@@ -211,7 +242,7 @@ function App() {
                 </div>
               </motion.div>
             </div>
-            <div className="flex-1 h-full flex justify-center items-center">
+            <div className="flex-1 h-full hidden md:flex justify-center items-center">
               <div className="w-[500px] h-[500px]" id="canvas-container">
                 <Scene />
               </div>
@@ -223,7 +254,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ ease: "easeInOut", duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="pb-6"
+            className="pb-6 md:block hidden"
           >
             <div className="flex items-start justify-center w-full gap-[68px] pb-4 text-text-white">
               <div className="flex flex-col items-center text-center gap-5">
@@ -289,57 +320,90 @@ function App() {
         <Separator />
         <div
           id="experience"
-          className="bg-bg-black w-full px-[146px] py-[48px]"
+          className="bg-bg-black w-full px-[28px] md:px-[146px] py-[48px]"
         >
-          <h2 className="text-text-white text-end mb-4">My experience</h2>
+          <h2 className="text-text-white text-end mb-4 text-[32px] md:text-[40px]">My experience</h2>
           <p className="text-text-white-soft text-end mb-[48px] text-[20px]">Work shown is a modified and anonymized version of real projects to protect confidential information</p>
 
           {experienceData.map((exp) => (
-            <ExperienceCard 
-            key={exp.title}
+            <ExperienceCard
+              key={exp.title}
               experienceCase={exp}
               setExperienceCardOpen={() => setExperienceCardOpen(exp)}
             />
           ))}
         </div>
         <Separator />
-        <div id="skills" className="w-full bg-bg-black px-[146px] py-[48px]">
-          <h2 className="mb-[48px] text-text-white">My skills</h2>
+        <div id="skills" className="w-full bg-bg-black px-[28px] md:px-[146px] pt-[48px] md:pb-[48px]">
+          <h2 className="mb-[48px] text-text-white text-[32px] md:text-[40px]">My skills</h2>
 
-          <div className="flex items-stretch w-full gap-[56px] mb-[48px]">
+          <div className="hidden md:flex items-stretch w-full gap-[56px] mb-[48px]">
             <SkillCard
+              animations={true}
               skillCase={skillsData[0]}
               className="flex-shrink-0 flex-4"
             />
 
             <SkillCard
+              animations={true}
+
               skillCase={skillsData[1]}
               className="flex-shrink-0 flex-3"
             />
           </div>
-          <div className="flex items-stretch w-full gap-[56px]">
+          <div className="hidden md:flex items-stretch w-full gap-[56px]">
             <SkillCard
+              animations={true}
+
               skillCase={skillsData[2]}
               className={"flex-shrink-0 flex-3"}
             />
 
             <SkillCard
+              animations={true}
+
               skillCase={skillsData[3]}
               className={"flex-shrink-0 flex-4"}
             />
           </div>
         </div>
+        <div className="block md:hidden bg-bg-black mb-[48px]">
+          <CardCarouselDots cards={[
+
+            <SkillCard
+              animations={false}
+              skillCase={skillsData[0]}
+              className="flex-shrink-0"
+            />,
+            <SkillCard
+              animations={false}
+              skillCase={skillsData[1]}
+              className="flex-shrink-0"
+            />,
+            <SkillCard
+              animations={false}
+              skillCase={skillsData[2]}
+              className={"flex-shrink-0"}
+            />,
+            <SkillCard
+              animations={false}
+              skillCase={skillsData[3]}
+              className={"flex-shrink-0"}
+            />
+          ]} />
+
+        </div>
         <Separator />
 
-        <div id="contact" className="bg-bg-black w-full px-[146px] py-[48px]">
-          <h4 className="italic text-text-white-soft text-[32px]">
+        <div id="contact" className="bg-bg-black w-full px-[28px] md:px-[146px] py-[48px]">
+          <h4 className="italic text-text-white-soft text-[20px] md:text-[32px]">
             Let’s connect
           </h4>
-          <h2 className="text-text-white mb-[48px] leading-none mb-[60px]">
+          <h2 className="text-text-white mb-[48px] leading-none mb-[60px] text-[32px] md:text-[40px]">
             Contact me
           </h2>
           <form>
-            <div className="mx-auto w-[580px] text-text-white-soft text-[20px] mb-[60px]">
+            <div className="mx-auto w-full md:w-[580px] text-text-white-soft text-[20px] mb-[60px]">
               <h4 className="mb-3 ml-2">Your email</h4>
               <GradientWrapper
                 color1="#333333"
@@ -413,7 +477,7 @@ function App() {
             </div>
           </form>
 
-          <div className="flex flex-col items-end  gap-3 text-text-white text-[20px]">
+          <div className="flex flex-col items-end  gap-3 text-text-white text-md md:text-[20px]">
             <div className="flex items-center gap-3">
               <p>christianterrazas47@gmail.com</p>
               <svg

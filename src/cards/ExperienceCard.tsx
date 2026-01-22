@@ -17,7 +17,7 @@ export default function ExperienceCard({
       }}
     >
       <motion.div
-        className="pl-[88px] py-[50px] rounded-[12px] mb-[48px] flex-5 cursor-pointer flex items-center border-transparent border-[2px] hover:border-accent"
+        className="px-[36px] md:px-0 md:pl-[88px] py-[50px] rounded-[12px] mb-[48px] flex-5 cursor-pointer flex items-center border-transparent border-[2px] hover:border-accent"
         style={{
           background:
             "linear-gradient(90deg,hsl(0, 0.00%, 15.00%) 0%,hsl(0, 0.00%, 10.00%) 100%)",
@@ -26,11 +26,11 @@ export default function ExperienceCard({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+        whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
         onClick={() => setExperienceCardOpen(experienceCase)}
       >
         <div className="">
-          <h3 className="text-text-white mb-[32px]">{experienceCase.title}</h3>
+          <h3 className="text-text-white mb-[32px] text-[28px] md:text-[36px]">{experienceCase.title}</h3>
           <p className="text-[20px] text-text-white-soft font-light mb-8">
             {experienceCase.description}
           </p>
@@ -51,7 +51,7 @@ export default function ExperienceCard({
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-auto w-[40px] flex-shrink-0 mx-6"
+          className="h-auto w-[40px] flex-shrink-0 mx-6 md:block hidden"
         >
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
@@ -68,7 +68,7 @@ export default function ExperienceCard({
           </g>
         </svg>
       </motion.div>
-      <div className="flex-4 px-20">
+      <div className="flex-4 px-20 md:block hidden">
         <h4 className="text-text-white font-light text-[36px] text-center">
           {experienceCase.note}
         </h4>
