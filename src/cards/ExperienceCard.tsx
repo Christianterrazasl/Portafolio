@@ -17,7 +17,7 @@ export default function ExperienceCard({
       }}
     >
       <motion.div
-        className="px-[36px] md:px-0 md:pl-[88px] py-[50px] rounded-[12px] mb-[48px] flex-5 cursor-pointer flex items-center border-transparent border-[2px] hover:border-accent"
+        className="px-[36px] lg:px-0 lg:pl-[88px] py-[50px] rounded-[12px] mb-[48px] flex-5 cursor-pointer flex items-center border-transparent border-[2px] hover:border-accent"
         style={{
           background:
             "linear-gradient(90deg,hsl(0, 0.00%, 15.00%) 0%,hsl(0, 0.00%, 10.00%) 100%)",
@@ -30,7 +30,7 @@ export default function ExperienceCard({
         onClick={() => setExperienceCardOpen(experienceCase)}
       >
         <div className="">
-          <h3 className="text-text-white mb-[32px] text-[28px] md:text-[36px]">{experienceCase.title}</h3>
+          <h3 className="text-text-white mb-[32px] text-[28px] lg:text-[36px]">{experienceCase.title}</h3>
           <p className="text-[20px] text-text-white-soft font-light mb-8">
             {experienceCase.description}
           </p>
@@ -68,7 +68,7 @@ export default function ExperienceCard({
           </g>
         </svg>
       </motion.div>
-      <div className="flex-4 px-20 md:block hidden">
+      <div className="flex-4 px-20 lg:block hidden">
         <h4 className="text-text-white font-light text-[36px] text-center">
           {experienceCase.note}
         </h4>

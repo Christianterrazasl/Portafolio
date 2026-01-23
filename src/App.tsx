@@ -163,7 +163,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ ease: "linear" }}
             viewport={{ once: true }}
-            className="hidden md:flex items-center mx-auto pt-[56px] justify-center gap-[90px]"
+            className="hidden lg:flex items-center mx-auto pt-[56px] justify-center gap-[90px]"
           >
             <NavBarItem title="About me" link="#abtme" />
             <NavBarItem title="Experience" link="#experience" />
@@ -171,7 +171,7 @@ function App() {
             <NavBarItem title="Contact me" link="#contact" />
           </motion.div>
           <div className="flex-1 flex items-center">
-            <div className="flex flex-col justify-between md:justify-center gap-0 md:pl-[146px] h-full md:h-auto px-[28px] md:px-0 pt-[100px] pb-[40px] md:pt-0 md:pb-0 w-full">
+            <div className="flex flex-col justify-between lg:justify-center gap-0 lg:pl-[146px] h-full lg:h-auto px-[28px] lg:px-0 pt-[100px] pb-[40px] lg:pt-0 lg:pb-0 w-full">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -189,7 +189,7 @@ function App() {
                   Full-stack Developer & <br /> Product Designer
                 </h1>
               </motion.div>
-              <div className="flex md:hidden justify-center items-center relative">
+              <div className="flex lg:hidden justify-center items-center relative">
 
                 <div className="w-[175px] h-[175px] relative">
                   <motion.div initial={{ rotate: 45 }} style={{ transformOrigin: "100% center" }} animate={{ rotate: 405 }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 w-1/2 h-full bg-accent rounded-l-[150px] z-0" />
@@ -216,25 +216,25 @@ function App() {
                 viewport={{ once: true }}
                 className="w-full"
               >
-                <p className="text-text-white-soft max-w-none md:max-w-[450px] text-[20px] mb-[34px] lg:mb-[1em]">
+                <p className="text-text-white-soft max-w-none lg:max-w-[450px] text-[20px] mb-[34px] lg:mb-[1em]">
                   {" "}
                   My goal is to create complete, scalable web applications that
                   combine clean design, intuitive user experiences, and solid
                   backend integrations.
                 </p>
 
-                <p className="text-text-white-soft max-w-[450px] text-[20px] mb-[48px] lg:block hidden">
+                <p className="text-text-white-soft max-w-[450px] text-[20px] mb-[48px] xl:block hidden">
                   I focus on building products from concept to deployment,
                   turning ideas into functional, real-world solutions.</p>
-                <div className="flex items-center text-[20px] gap-4 md:justify-start justify-center">
+                <div className="flex items-stretch lg:items-center text-md lg:text-[20px] gap-4 lg:justify-start justify-center">
                   <button
-                    className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white hover:bg-[#1053B7] w-full md:w-auto"
+                    className="bg-accent px-6 py-2 rounded-[12px] cursor-pointer text-text-white hover:bg-[#1053B7] w-full lg:w-auto"
                     onClick={() => handleScrollTo("#contact")}
                   >
                     Contact me!
                   </button>
                   <button
-                    className="bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-white w-full md:w-auto"
+                    className="bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.3)] px-6 py-2 rounded-[12px] cursor-pointer text-text-white w-full lg:w-auto"
                     onClick={() => handleScrollTo("#experience")}
                   >
                     See my projects
@@ -242,7 +242,7 @@ function App() {
                 </div>
               </motion.div>
             </div>
-            <div className="flex-1 h-full hidden md:flex justify-center items-center">
+            <div className="flex-1 h-full hidden lg:flex justify-center items-center">
               <div className="w-[500px] h-[500px]" id="canvas-container">
                 <Scene />
               </div>
@@ -254,7 +254,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ ease: "easeInOut", duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="pb-6 md:block hidden"
+            className="pb-6 lg:block hidden"
           >
             <div className="flex items-start justify-center w-full gap-[68px] pb-4 text-text-white">
               <div className="flex flex-col items-center text-center gap-5">
@@ -320,9 +320,9 @@ function App() {
         <Separator />
         <div
           id="experience"
-          className="bg-bg-black w-full px-[28px] md:px-[146px] py-[48px]"
+          className="bg-bg-black w-full px-[28px] lg:px-[146px] py-[48px]"
         >
-          <h2 className="text-text-white text-end mb-4 text-[32px] md:text-[40px]">My experience</h2>
+          <h2 className="text-text-white text-end mb-4 text-[32px] lg:text-[40px]">My experience</h2>
           <p className="text-text-white-soft text-end mb-[48px] text-[20px]">Work shown is a modified and anonymized version of real projects to protect confidential information</p>
 
           {experienceData.map((exp) => (
@@ -334,7 +334,7 @@ function App() {
           ))}
         </div>
         <Separator />
-        <div id="skills" className="w-full bg-bg-black px-[28px] md:px-[146px] pt-[48px] md:pb-[48px]">
+        <div id="skills" className="w-full bg-bg-black px-[28px] lg:px-[146px] pt-[48px] md:pb-[48px] w-full overflow-hidden">
           <h2 className="mb-[48px] text-text-white text-[32px] md:text-[40px]">My skills</h2>
 
           <div className="hidden md:flex items-stretch w-full gap-[56px] mb-[48px]">
