@@ -23,7 +23,7 @@ export default Scene;
 
 const Model = () => {
   const modelRef = useRef<any>(null);
-  const { scene } = useGLTF("/webpage_ui.glb");
+  const { scene } = useGLTF("webpage_ui.glb");
 
   useFrame((state) => {
     if (!modelRef.current) return;
@@ -45,4 +45,4 @@ const Model = () => {
   );
 };
 
-useGLTF.preload("/webpage_ui.glb");
+useGLTF.preload("webpage_ui.glb");

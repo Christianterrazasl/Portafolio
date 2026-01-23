@@ -171,7 +171,7 @@ function App() {
             <NavBarItem title="Contact me" link="#contact" />
           </motion.div>
           <div className="flex-1 flex items-center">
-            <div className="flex flex-col justify-between lg:justify-center gap-0 lg:pl-[146px] h-full lg:h-auto px-[28px] lg:px-0 pt-[100px] pb-[40px] lg:pt-0 lg:pb-0 w-full">
+            <div className="flex flex-col justify-between lg:justify-center gap-0 lg:pl-[146px] h-full lg:h-auto px-[28px] lg:px-0 pt-[100px] pb-[40px] lg:pt-0 lg:pb-0 w-full lg:max-w-[800px]">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}

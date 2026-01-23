@@ -1,6 +1,3 @@
-import React from 'react'
-
-
 const Separator = () => {
   return (
     <div className='bg-bg-black w-full'>
