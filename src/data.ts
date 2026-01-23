@@ -20,7 +20,7 @@ export const experienceData: ExperienceCase[] = [
       "Next.js, React, Supabase (Auth, Database, Storage), Mux, Tailwind CSS",
     left: false,
     video: null,
-    images: ["/images/v11.png", "/images/v21.png", "/images/v31.png", "/images/v41.png"],
+    images: ["images/v11.png", "images/v21.png"],
   },
   {
     title: "International Product Website (Multi-page Frontend)",
@@ -31,7 +31,7 @@ export const experienceData: ExperienceCase[] = [
     stack: "Next.js, React, Tailwind CSS, Framer Motion, GSAP",
     left: true,
     video: null,
-    images: ["/images/t11.png", "/images/t21.png", "/images/t31.png"],
+    images: ["images/t11.png", "images/t21.png"],
   },
   {
     title: "Crypto Streaming Platform (MVP)",
@@ -42,7 +42,7 @@ export const experienceData: ExperienceCase[] = [
     stack: "React, Next.js, Tailwind CSS",
     left: false,
     video: null,
-    images: ["/images/s1.png", "/images/s2.png", "/images/s3.png"],
+    images: ["images/s1.png", "images/s2.png"],
   },
 ];
 

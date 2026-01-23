@@ -101,7 +101,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
               className="bg-bg-black-soft w-[1200px] max-h-[90vh] overflow-y-auto rounded-[12px] p-8">
-              <div className="flex justify-between items-start mb-6">
+              <div className="hidden lg:flex justify-between items-start mb-6">
                 <h2 className="text-text-white text-[32px] md:text-[40px]">
                   {experienceCardOpen.title}
                 </h2>
@@ -125,10 +125,10 @@ function App() {
                   </svg>
                 </button>
               </div>
-              <p className="text-[20px] text-text-white-soft font-light mb-8">
+              <p className="text-md md:text-[20px] text-text-white-soft font-light mb-8">
                 {experienceCardOpen.description}
               </p>
-              <p className="text-[20px] text-text-white-soft font-light mb-8">
+              <p className=" text-md md:text-[20px] text-text-white-soft font-light mb-8">
                 <span className="font-medium">Stack used:</span>{" "}
                 {experienceCardOpen.stack}
               </p>
@@ -171,7 +171,7 @@ function App() {
             <NavBarItem title="Contact me" link="#contact" />
           </motion.div>
           <div className="flex-1 flex items-center">
-            <div className="flex flex-col justify-between lg:justify-center gap-0 lg:pl-[146px] h-full lg:h-auto px-[28px] lg:px-0 pt-[100px] pb-[40px] lg:pt-0 lg:pb-0 w-full lg:max-w-[800px]">
+            <div className="flex flex-col justify-between lg:justify-center gap-0 lg:pl-[146px] h-full lg:h-auto px-[28px] lg:px-0 pt-[40px] pb-[40px] lg:pt-0 lg:pb-0 w-full lg:max-w-[800px]">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
