@@ -191,9 +191,9 @@ function App() {
               </motion.div>
               <div className="flex lg:hidden justify-center items-center relative">
 
-                <div className="w-[175px] h-[175px] relative">
+                <div className="w-[100px] h-[100px] md:w-[175px] md:h-[175px] relative">
                   <motion.div initial={{ rotate: 45 }} style={{ transformOrigin: "100% center" }} animate={{ rotate: 405 }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 w-1/2 h-full bg-accent rounded-l-[150px] z-0" />
-                  <svg width="97" height="97" viewBox="0 0 93 97" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[100px] h-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                  <svg width="97" height="97" viewBox="0 0 93 97" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
                     <g clipPath="url(#clip0_81_41)">
                       <path d="M46.5 48.4997C51.0984 48.4997 55.5936 47.0775 59.417 44.4129C63.2405 41.7482 66.2205 37.9609 67.9802 33.5298C69.7399 29.0987 70.2004 24.2228 69.3033 19.5188C68.4062 14.8148 66.1918 10.4938 62.9402 7.1024C59.6887 3.71097 55.5459 1.40138 51.0359 0.465693C46.5258 -0.469998 41.851 0.0102325 37.6026 1.84566C33.3542 3.68108 29.7231 6.78927 27.1683 10.7772C24.6136 14.765 23.25 19.4535 23.25 24.2497C23.2562 30.6793 25.7077 36.8436 30.0666 41.39C34.4255 45.9364 40.3356 48.4933 46.5 48.4997ZM46.5 8.08307C49.5656 8.08307 52.5624 9.03123 55.1113 10.8076C57.6603 12.5841 59.647 15.1089 60.8201 18.063C61.9933 21.0171 62.3002 24.2677 61.7022 27.4037C61.1041 30.5397 59.6279 33.4203 57.4602 35.6813C55.2924 37.9422 52.5306 39.482 49.5239 40.1058C46.5172 40.7296 43.4007 40.4094 40.5684 39.1858C37.7362 37.9622 35.3154 35.89 33.6122 33.2315C31.9091 30.5729 31 27.4472 31 24.2497C31 19.9621 32.633 15.85 35.5398 12.8182C38.4467 9.78634 42.3891 8.08307 46.5 8.08307Z" fill="#F2F2F2" />
                       <path d="M46.5 56.5858C37.2537 56.5965 28.3891 60.4323 21.851 67.2516C15.3129 74.0709 11.6353 83.3169 11.625 92.9608C11.625 94.0327 12.0333 95.0608 12.76 95.8187C13.4867 96.5767 14.4723 97.0025 15.5 97.0025C16.5277 97.0025 17.5133 96.5767 18.24 95.8187C18.9667 95.0608 19.375 94.0327 19.375 92.9608C19.375 85.4574 22.2328 78.2613 27.3197 72.9556C32.4067 67.6499 39.306 64.6691 46.5 64.6691C53.694 64.6691 60.5933 67.6499 65.6803 72.9556C70.7672 78.2613 73.625 85.4574 73.625 92.9608C73.625 94.0327 74.0333 95.0608 74.76 95.8187C75.4867 96.5767 76.4723 97.0025 77.5 97.0025C78.5277 97.0025 79.5133 96.5767 80.24 95.8187C80.9667 95.0608 81.375 94.0327 81.375 92.9608C81.3647 83.3169 77.6871 74.0709 71.149 67.2516C64.6109 60.4323 55.7463 56.5965 46.5 56.5858Z" fill="#F2F2F2" />
@@ -216,7 +216,7 @@ function App() {
                 viewport={{ once: true }}
                 className="w-full"
               >
-                <p className="text-text-white-soft max-w-none lg:max-w-[450px] text-[20px] mb-[34px] lg:mb-[1em]">
+                <p className="text-text-white-soft max-w-none lg:max-w-[450px] text-md md:text-[20px] mb-[34px] lg:mb-[1em]">
                   {" "}
                   My goal is to create complete, scalable web applications that
                   combine clean design, intuitive user experiences, and solid
@@ -323,7 +323,7 @@ function App() {
           className="bg-bg-black w-full px-[28px] lg:px-[146px] py-[48px]"
         >
           <h2 className="text-text-white text-end mb-4 text-[32px] lg:text-[40px]">My experience</h2>
-          <p className="text-text-white-soft text-end mb-[48px] text-[20px]">Work shown is a modified and anonymized version of real projects to protect confidential information</p>
+          <p className="text-text-white-soft text-end mb-[48px] text-md md:text-[20px]">Work shown is a modified and anonymized version of real projects to protect confidential information</p>
 
           {experienceData.map((exp) => (
             <ExperienceCard

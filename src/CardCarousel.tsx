@@ -29,8 +29,8 @@ export default function CardCarouselDots({
             <div
                 className="relative pb-[46px]"
                 style={{
-                    paddingLeft: "15vw",
-                    paddingRight: `15vw`,
+                    paddingLeft: "8vw",
+                    paddingRight: `8vw`,
                     overflow: "hidden",
                     height: "fit-content",
                 }}
@@ -47,7 +47,7 @@ export default function CardCarouselDots({
                         height: `auto`
                     }}
                     animate={{
-                        translateX: `-${cardIndex * (75)}vw`,
+                        translateX: `-${cardIndex * (84)}vw`,
                     }}
                     transition={SPRING_OPTIONS}
                 >

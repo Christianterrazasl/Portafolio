@@ -29,7 +29,7 @@ const SkillCard = ({ skillCase, className, animations }: { skillCase: SkillCase,
 
     <div
       key={skillCase.title}
-      className={`rounded-[12px] border-[4px] border-bg-black-soft px-6 md:px-[56px] py-[38px] md:w-auto w-[70vw] md:h-auto h-full ${className}`}
+      className={`rounded-[12px] border-[4px] border-bg-black-soft px-6 md:px-[56px] py-[38px] md:w-auto w-[80vw] md:h-auto h-full ${className}`}
     >
       <h3 className="mb-6 text-text-white text-[28px] md:text-[36px]">{skillCase.title}</h3>
       <ul className="text-[20px] font-light text-text-white-soft pl-2 list-disc list-inside space-y-[1em]">

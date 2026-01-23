@@ -31,16 +31,16 @@ export default function ExperienceCard({
       >
         <div className="">
           <h3 className="text-text-white mb-[32px] text-[28px] lg:text-[36px]">{experienceCase.title}</h3>
-          <p className="text-[20px] text-text-white-soft font-light mb-8">
+          <p className="text-md md:text-[20px] text-text-white-soft font-light mb-8">
             {experienceCase.description}
           </p>
-          <p className="text-[20px] text-text-white-soft font-light">
+          <p className="text-md md:text-[20px] text-text-white-soft font-light">
             <span className="font-medium">Stack used:</span>{" "}
             {experienceCase.stack}
           </p>
 
           {experienceCase.link && (
-            <p className="text-[20px] text-text-white-soft font-light mb-2">
+            <p className="text-md md:text-[20px] text-text-white-soft font-light mb-2">
               <span className="font-medium">Link:</span> {experienceCase.link}
             </p>
           )}
